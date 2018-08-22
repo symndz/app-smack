@@ -13,6 +13,7 @@
 		861422CA212D7EAB008E705F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861422C8212D7EAB008E705F /* Main.storyboard */; };
 		861422CC212D7EAD008E705F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861422CB212D7EAD008E705F /* Assets.xcassets */; };
 		861422CF212D7EAD008E705F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861422CD212D7EAD008E705F /* LaunchScreen.storyboard */; };
+		864A5C0B212D8ACA00D36595 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 864A5C0A212D8ACA00D36595 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,9 @@
 		861422CB212D7EAD008E705F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		861422CE212D7EAD008E705F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		861422D0212D7EAD008E705F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		864A5C08212D8AC900D36595 /* SmackChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		864A5C09212D8ACA00D36595 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		864A5C0A212D8ACA00D36595 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		F1707FECC8B2CD0F7FAA7E0F /* Pods_SmackChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,7 @@
 		861422C3212D7EAB008E705F /* SmackChat */ = {
 			isa = PBXGroup;
 			children = (
+				864A5C07212D8A7E00D36595 /* Supporting Files */,
 				861422C4212D7EAB008E705F /* AppDelegate.swift */,
 				861422C6212D7EAB008E705F /* ViewController.swift */,
 				861422C8212D7EAB008E705F /* Main.storyboard */,
@@ -78,6 +83,16 @@
 				861422D0212D7EAD008E705F /* Info.plist */,
 			);
 			path = SmackChat;
+			sourceTree = "<group>";
+		};
+		864A5C07212D8A7E00D36595 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				864A5C09212D8ACA00D36595 /* SWRevealViewController.h */,
+				864A5C0A212D8ACA00D36595 /* SWRevealViewController.m */,
+				864A5C08212D8AC900D36595 /* SmackChat-Bridging-Header.h */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AAB4DA45E0FA72691C5C18DA /* Frameworks */ = {
@@ -122,6 +137,7 @@
 				TargetAttributes = {
 					861422C0212D7EAB008E705F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -208,6 +224,7 @@
 			files = (
 				861422C7212D7EAB008E705F /* ViewController.swift in Sources */,
 				861422C5212D7EAB008E705F /* AppDelegate.swift in Sources */,
+				864A5C0B212D8ACA00D36595 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +369,7 @@
 			baseConfigurationReference = 2BE968FCD27FC8D8BCE0847B /* Pods-SmackChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 226MX87993;
 				INFOPLIST_FILE = SmackChat/Info.plist;
@@ -361,6 +379,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.works.SmackChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmackChat/Supporting Files/SmackChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -371,6 +391,7 @@
 			baseConfigurationReference = 22360BC9FD9D2B61666FBC0E /* Pods-SmackChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 226MX87993;
 				INFOPLIST_FILE = SmackChat/Info.plist;
@@ -380,6 +401,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mob.works.SmackChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmackChat/Supporting Files/SmackChat-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
