@@ -10,6 +10,18 @@ import UIKit
 
 class ChannelVC: UIViewController {
 
+    
+    // Outlets section
+    
+    @IBOutlet weak var loginBtn: UIButton!
+    
+    // Actions section
+    
+    @IBAction func loginBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: TO_LOGIN, sender: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
