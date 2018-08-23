@@ -18,6 +18,7 @@
 		8650B0F5212DA40B00C67F68 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650B0F4212DA40B00C67F68 /* GradientView.swift */; };
 		8650B0F8212EB88F00C67F68 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650B0F7212EB88F00C67F68 /* Constants.swift */; };
 		8650B0FA212EC07200C67F68 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650B0F9212EC07200C67F68 /* LoginVC.swift */; };
+		8650B0FC212EC3CF00C67F68 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650B0FB212EC3CF00C67F68 /* CreateAccountVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		8650B0F4212DA40B00C67F68 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8650B0F7212EB88F00C67F68 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8650B0F9212EC07200C67F68 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		8650B0FB212EC3CF00C67F68 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		F1707FECC8B2CD0F7FAA7E0F /* Pods_SmackChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				864A5C0F212D911200D36595 /* ChatVC.swift */,
 				864A5C11212D912500D36595 /* ChannelVC.swift */,
 				8650B0F9212EC07200C67F68 /* LoginVC.swift */,
+				8650B0FB212EC3CF00C67F68 /* CreateAccountVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				864A5C12212D912500D36595 /* ChannelVC.swift in Sources */,
 				864A5C10212D911200D36595 /* ChatVC.swift in Sources */,
+				8650B0FC212EC3CF00C67F68 /* CreateAccountVC.swift in Sources */,
 				8650B0F5212DA40B00C67F68 /* GradientView.swift in Sources */,
 				861422C5212D7EAB008E705F /* AppDelegate.swift in Sources */,
 				864A5C0B212D8ACA00D36595 /* SWRevealViewController.m in Sources */,
