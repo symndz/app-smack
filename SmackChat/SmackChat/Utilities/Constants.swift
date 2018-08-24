@@ -14,6 +14,7 @@ typealias CompletionHandler = (_ Success: Bool) -> () // enclosure or closure
 
 let BASE_URL = "https://chattychatvhatv2.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
+let URL_LOG_IN = "\(BASE_URL)account/login"
 
 // Segues
 
@@ -27,3 +28,9 @@ let UNWIND = "unwindToChannel"
 let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
+
+// Headers
+
+let HEADER_JSON_TYPE = [
+    "Content-Type" : "application/json; characterset=utf-8"
+]
