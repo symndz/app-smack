@@ -86,6 +86,7 @@ class CreateAccountVC: UIViewController {
         let b = CGFloat( arc4random_uniform(255)) / 255
         let alphabeta = CGFloat( 1 ) // not transparent at all
         avatarBgColor = UIColor(red: r, green: g, blue: b, alpha: alphabeta)
+        avatarColor = "[\(r), \(b), \(g), 1]"
         
         // and then
         UIView.animate(withDuration: 0.25) {

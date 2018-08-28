@@ -13,6 +13,7 @@ class ChannelVC: UIViewController {
     
     // Outlets section
     
+    @IBOutlet weak var userImage: CircleImage!
     @IBOutlet weak var loginBtn: UIButton!
     
     // Actions section
@@ -29,6 +30,20 @@ class ChannelVC: UIViewController {
         // Do any additional setup after loading the view.
         self.revealViewController().rearViewRevealWidth =
             self.view.frame.size.width - 60
+        
+        // adding notification observer (NOTIF_USER_DATA_DID_CHANGE)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
 
+    @objc func userDataDidChange(_ notif: Notification) {
+        if AuthService.instance.isLoggedIN {
+            loginBtn.setTitle(UserDataService.instance.name, for: .normal)
+            userImage.image = UIImage(named: UserDataService.instance.avatarName)
+            userImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
+        } else {
+            loginBtn.setTitle("Login", for: .normal)
+            userImage.image = UIImage(named: "menuProfileIcon")
+            userImage.backgroundColor = UIColor.clear
+        }
+    }
 }
