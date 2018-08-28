@@ -16,6 +16,7 @@ let BASE_URL = "https://chattychatvhatv2.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOG_IN = "\(BASE_URL)account/login"
 let URL_USER_ADD = "\(BASE_URL)user/add"
+let URL_USER_BY_EMAIL = "\(BASE_URL)user/byEmail/"
 
 // Segues
 
@@ -46,7 +47,8 @@ let HEADER_JSON_TYPE = [
 ]
 
 let HEADER_AUTH_TYPE_WITH_TOKEN = [
-    "Authorization" : "Bearer \(AuthService.instance.authToken)"
+    "Authorization" : "Bearer \(AuthService.instance.authToken)",
+    "Content-Type" : "application/json; characterset=utf-8"
 ]
 
 

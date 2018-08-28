@@ -81,6 +81,7 @@ class UserDataService {
         AuthService.instance.isLoggedIN = false
         AuthService.instance.userEmail = ""
         AuthService.instance.authToken = ""
+        debugPrint("user logged out")
     }
 
 }

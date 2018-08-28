@@ -121,35 +121,12 @@ class AuthService {
             "avatarColor": avatarColor
         ]
         
-        let header = [
-            HEADER_AUTH_TYPE_WITH_TOKEN,
-            HEADER_JSON_TYPE
-        ]
-        
-        //Alamofire.request(<#T##url: URLConvertible##URLConvertible#>, method: <#T##HTTPMethod#>, parameters: <#T##Parameters?#>, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>)
-        
         Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER_AUTH_TYPE_WITH_TOKEN).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
-                
-                do {
-                    let json = try JSON(data: data)
-                    
-                    let id = json["_id"].stringValue
-                    let avatarColor = json["avatarColor"].stringValue
-                    let avatarName = json["avatarName"].stringValue
-                    let email = json["email"].stringValue
-                    let name = json["name"].stringValue
-                    
-                    UserDataService.instance.setUserData(id: id, avatarColor: avatarColor, avatarName: avatarName, email: email, name: name)
-
-                    debugPrint(response.result.value as Any)
-                    completion(true)
-                } catch let error as NSError {
-                    debugPrint(error)
-                }
-
-                
+                self.setUserINfo(data: data)
+                debugPrint(response.result.value as Any)
+                completion(true)
             } else {
                 debugPrint(response.result.error as Any)
                 completion(false)
@@ -157,6 +134,41 @@ class AuthService {
             
             
         }
+    }
+    
+    func findUserByEmail(completion: @escaping CompletionHandler) {
+        Alamofire.request("\(URL_USER_BY_EMAIL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_AUTH_TYPE_WITH_TOKEN).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                self.setUserINfo(data: data)
+
+                debugPrint(response.result.value as Any)
+                completion(true)
+            } else {
+                debugPrint(response.result.error as Any)
+                completion(false)
+            }
+        }
+    }
+    
+    func setUserINfo(data: Data) {
+        do {
+            let json = try JSON(data: data)
+            
+            let id = json["_id"].stringValue
+            let avatarColor = json["avatarColor"].stringValue
+            let avatarName = json["avatarName"].stringValue
+            let email = json["email"].stringValue
+            let name = json["name"].stringValue
+    
+            
+            UserDataService.instance.setUserData(id: id, avatarColor: avatarColor, avatarName: avatarName, email: email, name: name)
+            
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    
+        
     }
     
 }

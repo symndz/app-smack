@@ -25,11 +25,9 @@ class ProfileVC: UIViewController {
     // Actions
     
     @IBAction func logoutPressed(_ sender: Any) {
-        if AuthService.instance.isLoggedIN {
-            UserDataService.instance.logoutUser()
-            // and post notifications also
-            NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-        }
+        UserDataService.instance.logoutUser()
+        // and post notifications also
+        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         dismiss(animated: true, completion: nil)
     }
     
