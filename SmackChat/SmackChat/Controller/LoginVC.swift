@@ -26,8 +26,21 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setupView() {
+//        username.attributedPlaceholder = NSAttributedString(string: "#username", attributes: [NSAttributedStringKey.foregroundColor : smackPurplePlaceholder])
+//        userpasswordTxt.attributedPlaceholder = NSAttributedString(string: "#password", attributes: [NSAttributedStringKey.foregroundColor : smackPurplePlaceholder])
+//
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.handleTapOnScreen))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTapOnScreen() {
+        view.endEditing(true)
     }
 
 }

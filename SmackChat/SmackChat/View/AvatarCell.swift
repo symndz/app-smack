@@ -8,6 +8,8 @@
 
 import UIKit
 
+var globalAvatarType : Int?
+
 enum AvatarType {
     case dark
     case light
