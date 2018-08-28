@@ -29,6 +29,7 @@
 		86C025D52135691A0019A896 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C025D32135691A0019A896 /* ProfileVC.xib */; };
 		86C025D8213594490019A896 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025D7213594490019A896 /* MessageService.swift */; };
 		86C025DA2135948F0019A896 /* Chanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025D92135948F0019A896 /* Chanel.swift */; };
+		86C025DC2135A5480019A896 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025DB2135A5480019A896 /* ChannelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		86C025D32135691A0019A896 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		86C025D7213594490019A896 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		86C025D92135948F0019A896 /* Chanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chanel.swift; sourceTree = "<group>"; };
+		86C025DB2135A5480019A896 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		F1707FECC8B2CD0F7FAA7E0F /* Pods_SmackChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				86C025C6213012F80019A896 /* RoundedButton.swift */,
 				86C025CC213040520019A896 /* AvatarCell.swift */,
 				86C025CE213549A20019A896 /* CircleImage.swift */,
+				86C025DB2135A5480019A896 /* ChannelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86C025D42135691A0019A896 /* ProfileVC.swift in Sources */,
+				86C025DC2135A5480019A896 /* ChannelCell.swift in Sources */,
 				864A5C12212D912500D36595 /* ChannelVC.swift in Sources */,
 				86C025CB21303D1A0019A896 /* AvatarPickerVC.swift in Sources */,
 				86C025C7213012F80019A896 /* RoundedButton.swift in Sources */,

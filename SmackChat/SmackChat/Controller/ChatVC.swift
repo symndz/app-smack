@@ -14,7 +14,6 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var menuBtn: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +26,10 @@ class ChatVC: UIViewController {
             AuthService.instance.findUserByEmail { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             }
+        }
+        
+        MessageService.instance.findAllChannel_Swift4 { (success) in
+            
         }
     }
 }

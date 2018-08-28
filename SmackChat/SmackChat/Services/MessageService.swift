@@ -18,7 +18,7 @@ class MessageService {
     var channels_Swift4 = [Channel_Swift4]() // () makes instance
     
     func findAllChannel_Swift4(completion: @escaping CompletionHandler) {
-        Alamofire.request(URL_GET_CHANNELS, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_AUTH_TYPE_WITH_TOKEN).responseJSON { (response) in
+        Alamofire.request(URL_GET_CHANNELS, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_AUTH_JUST_TOKEN).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
                 
@@ -30,7 +30,6 @@ class MessageService {
                     completion(false)
                 }
                 print(self.channels_Swift4)
-                
             } else {
                 completion(false)
                 debugPrint(response.result.error as Any)

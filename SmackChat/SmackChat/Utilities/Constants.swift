@@ -47,6 +47,10 @@ let HEADER_JSON_TYPE = [
     "Content-Type" : "application/json; characterset=utf-8"
 ]
 
+let HEADER_AUTH_JUST_TOKEN = [
+    "Authorization" : "Bearer \(AuthService.instance.authToken)"
+]
+
 let HEADER_AUTH_TYPE_WITH_TOKEN = [
     "Authorization" : "Bearer \(AuthService.instance.authToken)",
     "Content-Type" : "application/json; characterset=utf-8"
