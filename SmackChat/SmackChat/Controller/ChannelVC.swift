@@ -45,6 +45,11 @@ class ChannelVC: UIViewController {
         
         // adding notification observer (NOTIF_USER_DATA_DID_CHANGE)
         NotificationCenter.default.addObserver(self, selector: #selector(self.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        
+        // get channels list
+        MessageService.instance.findAllChannel_Swift4 { (success) in
+            debugPrint("here we go")
+        }
     }
 
     @objc func userDataDidChange(_ notif: Notification) {

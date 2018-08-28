@@ -27,6 +27,8 @@
 		86C025CF213549A20019A896 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025CE213549A20019A896 /* CircleImage.swift */; };
 		86C025D42135691A0019A896 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025D22135691A0019A896 /* ProfileVC.swift */; };
 		86C025D52135691A0019A896 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C025D32135691A0019A896 /* ProfileVC.xib */; };
+		86C025D8213594490019A896 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025D7213594490019A896 /* MessageService.swift */; };
+		86C025DA2135948F0019A896 /* Chanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C025D92135948F0019A896 /* Chanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		86C025CE213549A20019A896 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		86C025D22135691A0019A896 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		86C025D32135691A0019A896 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
+		86C025D7213594490019A896 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		86C025D92135948F0019A896 /* Chanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chanel.swift; sourceTree = "<group>"; };
 		F1707FECC8B2CD0F7FAA7E0F /* Pods_SmackChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +157,7 @@
 		864A5C0E212D90F500D36595 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				86C025D92135948F0019A896 /* Chanel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			children = (
 				8650B0FE212FFB8C00C67F68 /* AuthService.swift */,
 				86C025C8213025500019A896 /* UserDataService.swift */,
+				86C025D7213594490019A896 /* MessageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -315,9 +321,11 @@
 				86C025CB21303D1A0019A896 /* AvatarPickerVC.swift in Sources */,
 				86C025C7213012F80019A896 /* RoundedButton.swift in Sources */,
 				86C025CF213549A20019A896 /* CircleImage.swift in Sources */,
+				86C025D8213594490019A896 /* MessageService.swift in Sources */,
 				864A5C10212D911200D36595 /* ChatVC.swift in Sources */,
 				86C025C9213025500019A896 /* UserDataService.swift in Sources */,
 				8650B0FC212EC3CF00C67F68 /* CreateAccountVC.swift in Sources */,
+				86C025DA2135948F0019A896 /* Chanel.swift in Sources */,
 				8650B0FF212FFB8C00C67F68 /* AuthService.swift in Sources */,
 				8650B0F5212DA40B00C67F68 /* GradientView.swift in Sources */,
 				861422C5212D7EAB008E705F /* AppDelegate.swift in Sources */,

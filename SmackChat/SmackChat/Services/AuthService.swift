@@ -140,10 +140,17 @@ class AuthService {
         Alamofire.request("\(URL_USER_BY_EMAIL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_AUTH_TYPE_WITH_TOKEN).responseJSON { (response) in
             if response.result.error == nil {
                 guard let data = response.data else { return }
-                self.setUserINfo(data: data)
+                
+                
+                if self.setUserINfo(data: data) {
+                    completion(true)
+                    debugPrint(response.result.value as Any)
+                } else {
+                    completion(false)
+                    debugPrint("unknown auth error")
+                }
 
-                debugPrint(response.result.value as Any)
-                completion(true)
+
             } else {
                 debugPrint(response.result.error as Any)
                 completion(false)
@@ -151,7 +158,7 @@ class AuthService {
         }
     }
     
-    func setUserINfo(data: Data) {
+    func setUserINfo(data: Data) -> Bool {
         do {
             let json = try JSON(data: data)
             
@@ -163,9 +170,11 @@ class AuthService {
     
             
             UserDataService.instance.setUserData(id: id, avatarColor: avatarColor, avatarName: avatarName, email: email, name: name)
+            return true
             
         } catch let error as NSError {
             debugPrint(error)
+            return false
         }
     
         
