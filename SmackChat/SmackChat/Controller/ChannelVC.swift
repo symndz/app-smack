@@ -44,6 +44,8 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setupUserInfo()
     }
     override func viewDidLoad() {
+        debugPrint("DBG ChannelVC vied did load")
+        
         super.viewDidLoad()
 
         tableView.delegate = self
@@ -54,11 +56,21 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.view.frame.size.width - 60
         
         // adding notification observer (NOTIF_USER_DATA_DID_CHANGE)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
         // get channels list
         MessageService.instance.findAllChannel_Swift4 { (success) in
-            debugPrint("here we go")
+            debugPrint("DBG here we go")
+        }
+        
+        // get from socket or listen to?
+        SocketService.instance.recvChannel { (success) in
+            if success {
+                self.tableView.reloadData()
+                debugPrint("DBG reloading new data")
+            } else {
+                debugPrint("DBG failed to receive something")
+            }
         }
     }
 
