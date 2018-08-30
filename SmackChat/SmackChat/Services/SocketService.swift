@@ -58,4 +58,23 @@ class SocketService: NSObject {
             completionStatus(true)
         }
     }
+    
+    //node.js code
+    //Listens for a new chat message
+    //client.on('newMessage', function(messageBody, userId, channelId, userName, userAvatar, userAvatarColor)
+    func addMessage(messageBody: String, userId: String, channelId: String, completionMark: @escaping CompletionHandler) {
+        
+        let userDataSrvInst = UserDataService.instance
+        
+        socket.emit("newMessage", messageBody, userId, channelId, userDataSrvInst.name, userDataSrvInst.avatarName, userDataSrvInst.avatarColor)
+        
+        completionMark(true)
+    }
+    
+    //node.js code
+    //Send message to those connected in the room
+    //io.emit("messageCreated",  msg.messageBody, msg.userId, msg.channelId, msg.userName, msg.userAvatar, msg.userAvatarColor, msg.id, msg.timeStamp);
+    func recvMessages() {
+        
+    }
 }

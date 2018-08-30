@@ -82,10 +82,12 @@ class MessageService {
     }
     
     func findAllMessagesForChanel(channelId: String, completionMark: @escaping CompletionHandler) {
+        debugPrint("DBG URL \(URL_GET_MESSAGES)\(channelId)")
         Alamofire.request("\(URL_GET_MESSAGES)\(channelId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_AUTH_JUST_TOKEN).responseJSON { (response) in
             if response.result.error == nil {
                 self.clearMessages()
                 guard let data = response.data else { return }
+                debugPrint("DBG almost ready to parse")
                 do {
                     if let json = try JSON(data: data).array {
                         for item in json {

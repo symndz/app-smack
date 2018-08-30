@@ -13,13 +13,44 @@ class ChatVC: UIViewController {
     //Outlets
     
     @IBOutlet weak var menuBtn: UIButton!
-    
     @IBOutlet weak var chanelNameLbl: UILabel!
+    @IBOutlet weak var messageTxt: UITextField!
     
+    // Actions
+    
+    @IBAction func sendMsgBtnPressed(_ sender: Any) {
+        if AuthService.instance.isLoggedIN {
+            guard let channelId = MessageService.instance.selectedChanel?._id else { return }
+            guard let message = messageTxt.text else { return }
+            
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
+                if success {
+                    self.messageTxt.text = ""
+                    self.messageTxt.resignFirstResponder()
+                    
+                    debugPrint("DBG succesuly sent message")
+                } else {
+                    debugPrint("DBG failed to send message")
+                }
+            }
+            
+        } else {
+            debugPrint("DBG unathorized to send message")
+        }
+        
+    }
+    // other
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // little bit of magic
+        view.bindToKeyboard()
+        
+        // removing that magic keyboard when not needed
+        let tapOutside = UITapGestureRecognizer(target: self, action: #selector(ChatVC.handleTapOutside))
+        view.addGestureRecognizer(tapOutside)
+        
         // Do any additional setup after loading the view.
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -36,13 +67,17 @@ class ChatVC: UIViewController {
         }
     }
     
+    @objc func handleTapOutside() {
+        view.endEditing(true)
+    }
+    
     @objc func userDataDidChange(_ notif: Notification) {
         if AuthService.instance.isLoggedIN {
             // get chanels
             onLoginGetMessages()
         } else {
             // please login
-            chanelNameLbl.text = "Please Log In"
+            chanelNameLbl.text = "DBG Please Log In"
         }
     }
 
@@ -76,9 +111,12 @@ class ChatVC: UIViewController {
     func getMessages() {
         guard let channelId = MessageService.instance.selectedChanel?._id else { return }
         
+        debugPrint("DBG id is: \(channelId)")
         MessageService.instance.findAllMessagesForChanel(channelId: channelId) { (success) in
             if success {
                 debugPrint("DBG got the messages")
+            } else {
+                debugPrint("DBG something is not right with messages for \(MessageService.instance.selectedChanel?.name ?? "unknown")")
             }
         }
     }
