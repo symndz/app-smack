@@ -19,10 +19,17 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     // Actions section
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {}
+    
     @IBAction func addChannelPressed(_ sender: Any) {
-        let addChannel = AddChannelVC()
-        addChannel.modalPresentationStyle = .custom
-        present(addChannel, animated: true, completion: nil)
+        if AuthService.instance.isLoggedIN {
+            let addChannel = AddChannelVC()
+            addChannel.modalPresentationStyle = .custom
+            present(addChannel, animated: true, completion: nil)
+        } else {
+            debugPrint("DBG not authorized to add ")
+        }
     }
     
     @IBAction func loginBtnPressed(_ sender: Any) {
@@ -36,9 +43,6 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: TO_LOGIN, sender: nil)
         }
     }
-    
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {}
-    
     
     override func viewDidAppear(_ animated: Bool) {
         setupUserInfo()
@@ -57,6 +61,10 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // adding notification observer (NOTIF_USER_DATA_DID_CHANGE)
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        
+        // adding notification observer (NOTIF_CHANNELS_LIST_CHANGE)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userChannelsListChanged(_:)), name: NOTIF_CHANNELS_LIST_CHANGE, object: nil)
+        
         
         // get channels list
         MessageService.instance.findAllChannel_Swift4 { (success) in
@@ -78,6 +86,10 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setupUserInfo()
     }
     
+    @objc func userChannelsListChanged(_ notif: Notification) {
+        tableView.reloadData()
+    }
+    
     func setupUserInfo() {
         if AuthService.instance.isLoggedIN {
             loginBtn.setTitle(UserDataService.instance.name, for: .normal)
@@ -87,6 +99,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             loginBtn.setTitle("Login", for: .normal)
             userImage.image = UIImage(named: "menuProfileIcon")
             userImage.backgroundColor = UIColor.clear
+            tableView.reloadData()
         }
     }
     
@@ -107,5 +120,13 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels_Swift4.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instance.channels_Swift4[indexPath.row]
+        MessageService.instance.selectedChanel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        // hide table view with channels and slode to the left showinc chat view
+        self.revealViewController().revealToggle(animated: true)
     }
 }
