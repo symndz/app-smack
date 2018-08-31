@@ -12,6 +12,7 @@
 		861422CA212D7EAB008E705F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861422C8212D7EAB008E705F /* Main.storyboard */; };
 		861422CC212D7EAD008E705F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861422CB212D7EAD008E705F /* Assets.xcassets */; };
 		861422CF212D7EAD008E705F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861422CD212D7EAD008E705F /* LaunchScreen.storyboard */; };
+		863BD0B1213854DC002BE9D0 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BD0B0213854DC002BE9D0 /* MessageCell.swift */; };
 		864A5C0B212D8ACA00D36595 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 864A5C0A212D8ACA00D36595 /* SWRevealViewController.m */; };
 		864A5C10212D911200D36595 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864A5C0F212D911200D36595 /* ChatVC.swift */; };
 		864A5C12212D912500D36595 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864A5C11212D912500D36595 /* ChannelVC.swift */; };
@@ -46,6 +47,7 @@
 		861422CB212D7EAD008E705F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		861422CE212D7EAD008E705F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		861422D0212D7EAD008E705F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		863BD0B0213854DC002BE9D0 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		864A5C08212D8AC900D36595 /* SmackChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		864A5C09212D8ACA00D36595 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		864A5C0A212D8ACA00D36595 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				86C025CC213040520019A896 /* AvatarCell.swift */,
 				86C025CE213549A20019A896 /* CircleImage.swift */,
 				86C025DB2135A5480019A896 /* ChannelCell.swift */,
+				863BD0B0213854DC002BE9D0 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				86C025DC2135A5480019A896 /* ChannelCell.swift in Sources */,
 				864A5C12212D912500D36595 /* ChannelVC.swift in Sources */,
 				86C025CB21303D1A0019A896 /* AvatarPickerVC.swift in Sources */,
+				863BD0B1213854DC002BE9D0 /* MessageCell.swift in Sources */,
 				86C025C7213012F80019A896 /* RoundedButton.swift in Sources */,
 				867A0F0E21382A3E001207EF /* Message.swift in Sources */,
 				86C025CF213549A20019A896 /* CircleImage.swift in Sources */,
