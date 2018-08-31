@@ -65,6 +65,13 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // adding notification observer (NOTIF_CHANNELS_LIST_CHANGE)
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userChannelsListChanged(_:)), name: NOTIF_CHANNELS_LIST_CHANGE, object: nil)
         
+        SocketService.instance.recvMessages { (newMessage) in
+            if newMessage.channelId != MessageService.instance.selectedChanel?._id && AuthService.instance.isLoggedIN {
+                // adding messages to other channels :-))
+                MessageService.instance.unreadChannels.append(newMessage.channelId)
+                self.tableView.reloadData()
+            }
+        }
         
         // get channels list
         MessageService.instance.findAllChannel_Swift4 { (success) in
@@ -125,6 +132,17 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let channel = MessageService.instance.channels_Swift4[indexPath.row]
         MessageService.instance.selectedChanel = channel
+        
+        if MessageService.instance.unreadChannels.count > 0 {
+            MessageService.instance.unreadChannels = MessageService.instance.unreadChannels.filter{$0 != channel._id}
+        }
+        
+        // reload and select changed row as read
+        let index = IndexPath(row: indexPath.row, section: 0)
+        tableView.reloadRows(at: [index], with: .none)
+        tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+        
+        //post notification about
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         // hide table view with channels and slode to the left showinc chat view
         self.revealViewController().revealToggle(animated: true)

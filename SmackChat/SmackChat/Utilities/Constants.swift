@@ -11,6 +11,12 @@ import Foundation
 // tadmam comletion handler/s
 typealias CompletionHandler = (_ Success: Bool) -> () // enclosure or closure
 
+
+//Fonts
+let FONT_HELVETICA_NEUE = "HelveticaNeue-Regular"
+let FONT_HELVETICA_UNREAD = "HelveticaNeue-Bold"
+let FONT_SIZE_DEFAULT = CGFloat(bitPattern: 17)
+let FONT_SIZE_UNREAD = CGFloat(bitPattern: 22)
 // URL Constants
 
 let BASE_URL = "https://chattychatvhatv2.herokuapp.com/v1/"

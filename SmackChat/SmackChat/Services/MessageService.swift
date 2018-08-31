@@ -47,7 +47,7 @@ class MessageService {
     
     var channels_Swift4 = [Channel_Swift4]() // () make instance
     var messages = [Message]()
-    
+    var unreadChannels = [String]()
     var selectedChanel : Channel_Swift4?
 
     func findAllChannel_Swift4(completion: @escaping CompletionHandler) {
