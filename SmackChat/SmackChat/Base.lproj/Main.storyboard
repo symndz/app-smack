@@ -85,6 +85,13 @@
                                     <action selector="editingMessage:" destination="ogX-dY-RFS" eventType="editingChanged" id="bfD-To-ZTJ"/>
                                 </connections>
                             </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dN3-my-dFr">
+                                <rect key="frame" x="337" y="632" width="30" height="30"/>
+                                <state key="normal" image="send"/>
+                                <connections>
+                                    <action selector="sendMsgBtnPressed:" destination="ogX-dY-RFS" eventType="touchUpInside" id="R9l-5o-zMl"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dw0-za-Rij">
                                 <rect key="frame" x="0.0" y="77" width="375" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -145,18 +152,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dN3-my-dFr">
-                                <rect key="frame" x="337" y="632" width="30" height="30"/>
-                                <state key="normal" image="send"/>
-                                <connections>
-                                    <action selector="sendMsgBtnPressed:" destination="ogX-dY-RFS" eventType="touchUpInside" id="R9l-5o-zMl"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPs-ZF-6vn">
+                                <rect key="frame" x="8" y="621" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dN3-my-dFr" firstAttribute="centerY" secondItem="UeP-rE-HMP" secondAttribute="centerY" id="9hn-aJ-QJs"/>
                             <constraint firstItem="UeP-rE-HMP" firstAttribute="bottom" secondItem="4oB-90-Ffz" secondAttribute="bottom" id="DRl-WA-mC3"/>
+                            <constraint firstItem="UeP-rE-HMP" firstAttribute="top" secondItem="JPs-ZF-6vn" secondAttribute="bottom" constant="6" id="J9Y-Yl-NEs"/>
+                            <constraint firstItem="JPs-ZF-6vn" firstAttribute="leading" secondItem="4oB-90-Ffz" secondAttribute="leading" constant="8" id="K75-hu-DJH"/>
                             <constraint firstItem="L3u-WH-5eg" firstAttribute="leading" secondItem="4oB-90-Ffz" secondAttribute="leading" id="M2F-rx-Prp"/>
                             <constraint firstItem="UeP-rE-HMP" firstAttribute="top" secondItem="Dw0-za-Rij" secondAttribute="bottom" constant="30" id="V5r-sl-bHd"/>
                             <constraint firstItem="L3u-WH-5eg" firstAttribute="trailing" secondItem="4oB-90-Ffz" secondAttribute="trailing" id="XJD-ED-PIe"/>
@@ -176,6 +184,7 @@
                         <outlet property="messageTxt" destination="UeP-rE-HMP" id="6nD-We-VFG"/>
                         <outlet property="sendBtn" destination="dN3-my-dFr" id="x6J-KS-4Bb"/>
                         <outlet property="tableView" destination="Dw0-za-Rij" id="WqR-L4-i2A"/>
+                        <outlet property="typingUsersLbl" destination="JPs-ZF-6vn" id="sYo-0Z-RJS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvO-Rb-4O8" userLabel="First Responder" sceneMemberID="firstResponder"/>

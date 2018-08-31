@@ -12,6 +12,8 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //Outlets
     
+    @IBOutlet weak var typingUsersLbl: UILabel!
+    
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuBtn: UIButton!
@@ -23,12 +25,17 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Actions
     @IBAction func editingMessage(_ sender: Any) {
+        guard let channelId = MessageService.instance.selectedChanel?._id else { return }
+
         if messageTxt.text == "" {
             isTyping = false
             sendBtn.isHidden = true
+            
+            SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
         } else {
             if isTyping == false {
                 sendBtn.isHidden = false
+                SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
         }
@@ -43,7 +50,9 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if success {
                     self.messageTxt.text = ""
                     self.messageTxt.resignFirstResponder()
-                    
+                    self.sendBtn.isHidden = true
+                    SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId)
+
                     debugPrint("DBG succesuly sent message")
                 } else {
                     debugPrint("DBG failed to send message")
@@ -97,6 +106,34 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let endIndexPath = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
                     self.tableView.scrollToRow(at: endIndexPath, at: .bottom, animated: false)
                 }
+            }
+        }
+
+        SocketService.instance.recvTypingUsers { (typingUsers) in
+            guard let channelId = MessageService.instance.selectedChanel?._id else { return }
+            
+            var names = ""
+            var numberOfTypers = 0
+            
+            for (typingUser, channel) in typingUsers {
+                if typingUser != UserDataService.instance.name && channel == channelId {
+                    if names == "" {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)" // \() is string interpolation
+                    }
+                    numberOfTypers += 1
+                }
+            }
+            
+            if numberOfTypers > 0 && AuthService.instance.isLoggedIN {
+                var verb = "is"
+                if numberOfTypers > 1 {
+                    verb = "are"
+                }
+                self.typingUsersLbl.text = "\(names) \(verb) typing a message."
+            } else {
+                self.typingUsersLbl.text = ""
             }
         }
         if AuthService.instance.isLoggedIN {

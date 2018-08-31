@@ -8,6 +8,7 @@
 
 import Foundation
 
+// tadmam comletion handler/s
 typealias CompletionHandler = (_ Success: Bool) -> () // enclosure or closure
 
 // URL Constants
