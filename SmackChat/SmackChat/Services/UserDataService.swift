@@ -84,7 +84,7 @@ class UserDataService {
         
         // and also
         MessageService.instance.clearChannels()
-
+        MessageService.instance.clearMessages()
         debugPrint("user logged out")
     }
 

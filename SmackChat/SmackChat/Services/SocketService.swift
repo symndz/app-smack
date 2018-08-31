@@ -74,7 +74,30 @@ class SocketService: NSObject {
     //node.js code
     //Send message to those connected in the room
     //io.emit("messageCreated",  msg.messageBody, msg.userId, msg.channelId, msg.userName, msg.userAvatar, msg.userAvatarColor, msg.id, msg.timeStamp);
-    func recvMessages() {
+    // finally!!
+    func recvMessages(completionMark: @escaping CompletionHandler) {
+        if AuthService.instance.isLoggedIN == false {
+            completionMark(false)
+            return
+        }
         
+        socket.on("messageCreated") { (dataArray, ack) in
+            guard let msgBody = dataArray[0] as? String else { return }
+            // guard let userId = dataArray[1] -- ignoring this
+            guard let channelId = dataArray[2] as? String else { return }
+            guard let userName = dataArray[3] as? String else { return }
+            guard let userAvatar = dataArray[4] as? String else { return }
+            guard let userAvatarColor = dataArray[5] as? String else { return }
+            guard let id = dataArray[6] as? String else { return }
+            guard let timeStamp = dataArray[7] as? String else { return }
+            
+            if channelId == MessageService.instance.selectedChanel?._id {
+                let newMessage = Message(message: msgBody, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
+                MessageService.instance.messages.append(newMessage)
+                completionMark(true)
+            } else {
+                completionMark(false)
+            }
+        }
     }
 }
